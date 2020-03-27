@@ -27,20 +27,93 @@ public class Frm_Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PanMenu = new javax.swing.JPanel();
+        LblTitulo = new javax.swing.JLabel();
+        LblOpcion = new javax.swing.JLabel();
+        CmbOpciones = new javax.swing.JComboBox<>();
+        BtnAceptar = new javax.swing.JButton();
+        BtnSalir = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de Nóminas");
+        setResizable(false);
+
+        PanMenu.setBackground(new java.awt.Color(51, 51, 51));
+
+        LblTitulo.setFont(new java.awt.Font("Sakkal Majalla", 0, 36)); // NOI18N
+        LblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        LblTitulo.setText("Sistema de Nóminas");
+
+        LblOpcion.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        LblOpcion.setForeground(new java.awt.Color(255, 255, 255));
+        LblOpcion.setText("Opción:");
+
+        CmbOpciones.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        CmbOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mantenimiento Departamento", "Mantenimiento Unidad", "Mantenimiento Empleados", "Mantenimiento Puesto", "Cálculo de Nóminas", "Imprimir Nóminas" }));
+
+        BtnAceptar.setBackground(new java.awt.Color(0, 60, 90));
+        BtnAceptar.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        BtnAceptar.setForeground(new java.awt.Color(255, 255, 255));
+        BtnAceptar.setText("Aceptar");
+
+        BtnSalir.setBackground(new java.awt.Color(153, 0, 0));
+        BtnSalir.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        BtnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        BtnSalir.setText("Salir");
+
+        javax.swing.GroupLayout PanMenuLayout = new javax.swing.GroupLayout(PanMenu);
+        PanMenu.setLayout(PanMenuLayout);
+        PanMenuLayout.setHorizontalGroup(
+            PanMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanMenuLayout.createSequentialGroup()
+                .addGroup(PanMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(LblTitulo)
+                        .addGap(94, 139, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanMenuLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(BtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(PanMenuLayout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addGroup(PanMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanMenuLayout.createSequentialGroup()
+                        .addComponent(LblOpcion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CmbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnAceptar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        PanMenuLayout.setVerticalGroup(
+            PanMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LblTitulo)
+                .addGap(58, 58, 58)
+                .addGroup(PanMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblOpcion)
+                    .addComponent(CmbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BtnAceptar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addComponent(BtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(PanMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(PanMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -79,5 +152,11 @@ public class Frm_Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnAceptar;
+    private javax.swing.JButton BtnSalir;
+    private javax.swing.JComboBox<String> CmbOpciones;
+    private javax.swing.JLabel LblOpcion;
+    private javax.swing.JLabel LblTitulo;
+    private javax.swing.JPanel PanMenu;
     // End of variables declaration//GEN-END:variables
 }
