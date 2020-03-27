@@ -5,6 +5,8 @@
  */
 package Presentacion;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author diego
@@ -55,11 +57,18 @@ public class Frm_Inicio extends javax.swing.JFrame {
         BtnAceptar.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         BtnAceptar.setForeground(new java.awt.Color(255, 255, 255));
         BtnAceptar.setText("Aceptar");
+        BtnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAceptarActionPerformed(evt);
+            }
+        });
 
         BtnSalir.setBackground(new java.awt.Color(153, 0, 0));
         BtnSalir.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         BtnSalir.setForeground(new java.awt.Color(255, 255, 255));
         BtnSalir.setText("Salir");
+        BtnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout PanMenuLayout = new javax.swing.GroupLayout(PanMenu);
         PanMenu.setLayout(PanMenuLayout);
@@ -115,6 +124,36 @@ public class Frm_Inicio extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarActionPerformed
+       int opcion=0;
+       opcion = CmbOpciones.getSelectedIndex()+1;
+       switch(opcion)
+       {
+           case 1:
+               Frm_MantDep FMD = new Frm_MantDep();
+               FMD.setVisible(true);
+               break;
+           case 2:
+               Frm_MantUnid FMU = new Frm_MantUnid();
+               FMU.setVisible(true);
+               break;
+           case 3:
+               Frm_MantEmp FME = new Frm_MantEmp();
+               FME.setVisible(true);
+               break;
+           case 4:
+               Frm_MantPuesto FMP = new Frm_MantPuesto();
+               FMP.setVisible(true);
+               break;
+           case 5:
+               Frm_CalculoNomina FMCN = new Frm_CalculoNomina();
+               FMCN.setVisible(true);
+               break;
+           case 6:
+               break;
+       }
+    }//GEN-LAST:event_BtnAceptarActionPerformed
 
     /**
      * @param args the command line arguments
