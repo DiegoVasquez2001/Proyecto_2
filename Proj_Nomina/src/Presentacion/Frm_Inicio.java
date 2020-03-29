@@ -40,7 +40,7 @@ public class Frm_Inicio extends javax.swing.JFrame {
         setTitle("Sistema de Nóminas");
         setResizable(false);
 
-        PanMenu.setBackground(new java.awt.Color(51, 51, 51));
+        PanMenu.setBackground(new java.awt.Color(0, 30, 60));
 
         LblTitulo.setFont(new java.awt.Font("Sakkal Majalla", 0, 36)); // NOI18N
         LblTitulo.setForeground(new java.awt.Color(255, 255, 255));
