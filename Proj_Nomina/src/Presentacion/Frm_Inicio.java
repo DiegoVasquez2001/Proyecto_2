@@ -69,6 +69,11 @@ public class Frm_Inicio extends javax.swing.JFrame {
         BtnSalir.setForeground(new java.awt.Color(255, 255, 255));
         BtnSalir.setText("Salir");
         BtnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanMenuLayout = new javax.swing.GroupLayout(PanMenu);
         PanMenu.setLayout(PanMenuLayout);
@@ -154,6 +159,10 @@ public class Frm_Inicio extends javax.swing.JFrame {
                break;
        }
     }//GEN-LAST:event_BtnAceptarActionPerformed
+
+    private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_BtnSalirActionPerformed
 
     /**
      * @param args the command line arguments
