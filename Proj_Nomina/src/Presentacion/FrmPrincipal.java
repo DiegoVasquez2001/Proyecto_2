@@ -83,6 +83,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Tools.add(ToolDep);
 
         ToolPuesto.setText("Puestos");
+        ToolPuesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ToolPuestoActionPerformed(evt);
+            }
+        });
         Tools.add(ToolPuesto);
 
         ToolConcepto.setText("Conceptos");
@@ -118,6 +123,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Workbench.add(fDM);
         fDM.setVisible(true);
     }//GEN-LAST:event_ToolDepActionPerformed
+
+    private void ToolPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ToolPuestoActionPerformed
+        FrmMantPuesto fDM = new FrmMantPuesto();
+        Workbench.add(fDM);
+        fDM.setVisible(true);
+    }//GEN-LAST:event_ToolPuestoActionPerformed
 
     /**
      * @param args the command line arguments
