@@ -43,6 +43,8 @@ public class FrmMantPuesto extends javax.swing.JInternalFrame {
         jTextField4 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
 
+        setClosable(true);
+
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("Mantenimiento de Puestos");
 

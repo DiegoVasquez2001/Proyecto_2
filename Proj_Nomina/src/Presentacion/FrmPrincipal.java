@@ -91,9 +91,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Tools.add(ToolPuesto);
 
         ToolConcepto.setText("Conceptos");
+        ToolConcepto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ToolConceptoActionPerformed(evt);
+            }
+        });
         Tools.add(ToolConcepto);
 
         ToolEmpleado.setText("Empleados");
+        ToolEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ToolEmpleadoActionPerformed(evt);
+            }
+        });
         Tools.add(ToolEmpleado);
 
         jMenuBar1.add(Tools);
@@ -129,6 +139,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Workbench.add(fDM);
         fDM.setVisible(true);
     }//GEN-LAST:event_ToolPuestoActionPerformed
+
+    private void ToolConceptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ToolConceptoActionPerformed
+        FrmMantConcepto fDM = new FrmMantConcepto();
+        Workbench.add(fDM);
+        fDM.setVisible(true);
+    }//GEN-LAST:event_ToolConceptoActionPerformed
+
+    private void ToolEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ToolEmpleadoActionPerformed
+        FrmMantEmp fDM = new FrmMantEmp();
+        Workbench.add(fDM);
+        fDM.setVisible(true);
+    }//GEN-LAST:event_ToolEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
