@@ -56,6 +56,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         File.setText("Archivo");
 
         CalcNom.setText("Calcular Nómina");
+        CalcNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CalcNomActionPerformed(evt);
+            }
+        });
         File.add(CalcNom);
 
         ImpNom.setText("Imprimir Nómina");
@@ -151,6 +156,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Workbench.add(fDM);
         fDM.setVisible(true);
     }//GEN-LAST:event_ToolEmpleadoActionPerformed
+
+    private void CalcNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcNomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CalcNomActionPerformed
 
     /**
      * @param args the command line arguments
