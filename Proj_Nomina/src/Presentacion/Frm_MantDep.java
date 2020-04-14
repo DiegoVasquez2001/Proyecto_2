@@ -39,7 +39,7 @@ public class Frm_MantDep extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtCodD = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
+        txtNombreD = new javax.swing.JTextField();
         txtEstDep = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -71,7 +71,7 @@ public class Frm_MantDep extends javax.swing.JFrame {
 
         txtCodD.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
-        txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        txtNombreD.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
         txtEstDep.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
@@ -129,7 +129,7 @@ public class Frm_MantDep extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombre)
+                            .addComponent(txtNombreD)
                             .addComponent(txtEstDep)
                             .addComponent(txtCodD, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -168,7 +168,7 @@ public class Frm_MantDep extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -214,7 +214,7 @@ public class Frm_MantDep extends javax.swing.JFrame {
             pst.executeUpdate();
             
             txtCodD.setText("");
-            txtNombre.setText("");
+            txtNombreD.setText("");
             txtEstDep.setText("");
             txtBuscar.setText("");
             
@@ -235,7 +235,7 @@ public class Frm_MantDep extends javax.swing.JFrame {
             
             if(rs.next()){
                 txtCodD.setText(rs.getString("Id_Departamento"));
-                txtNombre.setText(rs.getString("Nombre_Departamento"));
+                txtNombreD.setText(rs.getString("Nombre_Departamento"));
                 txtEstDep.setText(rs.getString("Estado_Departamento"));
             } else {
             //    JOptionPane.showMessageDialog(null, "Alumno no registrado.");
@@ -297,6 +297,6 @@ public class Frm_MantDep extends javax.swing.JFrame {
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCodD;
     private javax.swing.JTextField txtEstDep;
-    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreD;
     // End of variables declaration//GEN-END:variables
 }
