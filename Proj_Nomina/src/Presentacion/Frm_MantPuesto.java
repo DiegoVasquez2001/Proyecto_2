@@ -235,7 +235,7 @@ public class Frm_MantPuesto extends javax.swing.JFrame {
             txtUnidadP.setText("");
             txtBuscar.setText("");
             
-            lblEstatus.setText("Registro eliminado.");
+            lblEstatus.setText("Puesto eliminado.");
             
         }catch (Exception e){
         }

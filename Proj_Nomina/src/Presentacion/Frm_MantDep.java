@@ -218,7 +218,7 @@ public class Frm_MantDep extends javax.swing.JFrame {
             txtEstDep.setText("");
             txtBuscar.setText("");
             
-            lblEstatus.setText("Registro eliminado.");
+            lblEstatus.setText("Departamento eliminado.");
             
         }catch (Exception e){
         }
