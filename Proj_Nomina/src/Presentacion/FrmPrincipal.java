@@ -5,6 +5,8 @@
  */
 package Presentacion;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author diego
@@ -158,7 +160,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ToolEmpleadoActionPerformed
 
     private void CalcNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcNomActionPerformed
-        // TODO add your handling code here:
+       int resp=JOptionPane.showConfirmDialog(this, "¿Desea Crear una Nómina Nueva?", "Cálculo Nómina",JOptionPane.YES_NO_OPTION);
+       if(resp==0)
+       {
+          FrmCrearNom fDM = new FrmCrearNom();
+          Workbench.add(fDM);
+          fDM.setVisible(true);    
+       }
+       else
+       {
+           FrmCalcNomina fDM = new FrmCalcNomina();
+           Workbench.add(fDM);
+           fDM.setVisible(true);
+       }
+
     }//GEN-LAST:event_CalcNomActionPerformed
 
     /**
@@ -206,7 +221,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem ToolEmpleado;
     private javax.swing.JMenuItem ToolPuesto;
     private javax.swing.JMenu Tools;
-    private javax.swing.JDesktopPane Workbench;
+    public static javax.swing.JDesktopPane Workbench;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
