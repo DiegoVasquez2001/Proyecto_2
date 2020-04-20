@@ -305,7 +305,7 @@ public class FrmMantDeptos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
              java.sql.Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
-            java.sql.PreparedStatement pst = cn.prepareStatement("delete from departamento where id_puesto = ?");
+            java.sql.PreparedStatement pst = cn.prepareStatement("delete from departamento where id_departamento = ?");
             
             pst.setString(1, txtBuscaxCod.getText().trim());
             pst.executeUpdate();

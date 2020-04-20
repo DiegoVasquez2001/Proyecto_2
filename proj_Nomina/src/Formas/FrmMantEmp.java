@@ -362,7 +362,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
          try {
              Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
-            PreparedStatement pst = cn.prepareStatement("delete from puesto where id_puesto = ?");
+            PreparedStatement pst = cn.prepareStatement("delete from puesto where carnet_empleado = ?");
             
             pst.setString(1, txtBuscaxCarnet.getText().trim());
             pst.executeUpdate();
