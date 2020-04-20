@@ -246,9 +246,9 @@ public class FrmMantDeptos extends javax.swing.JInternalFrame {
 
     private void btnCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambioActionPerformed
         try{
-            String ID = txtBuscaxCod.getText().trim();
+            String ID = txtCodDepto.getText().trim();
             Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
-            PreparedStatement pst = (PreparedStatement) cn.prepareStatement("update departamento set nombre_departamento = ?, estado_departamento = ? where id_departamento = " + ID);
+            PreparedStatement pst = (PreparedStatement) cn.prepareStatement("UPDATE departamento SET nombre_departamento=?, estado_departamento=? WHERE id_departamento='"+ID+"'");
             pst.setString(1, txtNomDepto.getText().trim());
             pst.setString(2, txtEstadoDepto.getText().trim());
             pst.executeUpdate();
