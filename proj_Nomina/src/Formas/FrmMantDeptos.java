@@ -6,6 +6,10 @@
 
 package Formas;
 
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -76,7 +80,7 @@ public class FrmMantDeptos extends javax.swing.JInternalFrame {
 
         btnGenCod.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnGenCod.setText("Generar Código");
-        btnGenCod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGenCod.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnGenCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenCodActionPerformed(evt);
@@ -85,15 +89,20 @@ public class FrmMantDeptos extends javax.swing.JInternalFrame {
 
         btnAlta.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnAlta.setText("Alta");
-        btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnBaja.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBaja.setText("Baja");
-        btnBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnCambio.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnCambio.setText("Cambio");
-        btnCambio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCambio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCambio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambioActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel5.setText("Buscar por Código:");
@@ -107,11 +116,21 @@ public class FrmMantDeptos extends javax.swing.JInternalFrame {
 
         btnBuscarxCod.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBuscarxCod.setText("Buscar");
-        btnBuscarxCod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarxCod.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnBuscarxCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarxCodActionPerformed(evt);
+            }
+        });
 
         btnBuscarxNom.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBuscarxNom.setText("Buscar");
-        btnBuscarxNom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarxNom.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnBuscarxNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarxNomActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelMantPuestoLayout = new javax.swing.GroupLayout(panelMantPuesto);
         panelMantPuesto.setLayout(panelMantPuestoLayout);
@@ -224,6 +243,58 @@ public class FrmMantDeptos extends javax.swing.JInternalFrame {
             txtCodDepto.setText(iTexto.toLowerCase());
         }
     }//GEN-LAST:event_btnGenCodActionPerformed
+
+    private void btnCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambioActionPerformed
+        try{
+            String ID = txtBuscaxCod.getText().trim();
+            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            PreparedStatement pst = (PreparedStatement) cn.prepareStatement("update departamento set nombre_departamento = ?, estado_departamento = ? where id_departamento = " + ID);
+            pst.setString(1, txtNomDepto.getText().trim());
+            pst.setString(2, txtEstadoDepto.getText().trim());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Modificación Realizada!");
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_btnCambioActionPerformed
+
+    private void btnBuscarxCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarxCodActionPerformed
+        try{
+            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            PreparedStatement pst = (PreparedStatement) cn.prepareStatement("select * from departamento where id_departamento = ?");
+            pst.setString(1, txtBuscaxCod.getText().trim());
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                txtCodDepto.setText(rs.getString("id_departamento"));
+                txtNomDepto.setText(rs.getString("nombre_departamento"));
+                txtEstadoDepto.setText(rs.getString("estado_departamento"));
+            }else{
+                JOptionPane.showMessageDialog(null, "Departamento no registrado!");
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_btnBuscarxCodActionPerformed
+
+    private void btnBuscarxNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarxNomActionPerformed
+        try{
+            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            PreparedStatement pst = (PreparedStatement) cn.prepareStatement("select * from departamento where nombre_departamento = ?");
+            pst.setString(1, txtBuscaxNom.getText().trim());
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                txtCodDepto.setText(rs.getString("id_departamento"));
+                txtNomDepto.setText(rs.getString("nombre_departamento"));
+                txtEstadoDepto.setText(rs.getString("estado_departamento"));
+            }else{
+                JOptionPane.showMessageDialog(null, "Departamento no registrado!");
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_btnBuscarxNomActionPerformed
     String iTexto="";
     private void ObtenerInicial(String texto){
         for(int i=0; i<5; i++){
