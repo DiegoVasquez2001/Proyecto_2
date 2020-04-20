@@ -160,6 +160,11 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         btnGenCod.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnGenCod.setText("Generar Carnet");
         btnGenCod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGenCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenCodActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -337,6 +342,63 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnGenCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenCodActionPerformed
+        ObtenerInicialesN(txtNomEmp.getText());
+        ObtenerInicialesA(txtApeEmp.getText());
+        ObtenerDigitosDPI(txtDPIEmp.getText());
+        txtCarnetEmp.setText(iNombre.toUpperCase()+iApellido.toUpperCase()+iDPI);
+    }//GEN-LAST:event_btnGenCodActionPerformed
+    String iNombre=""; String iApellido="";
+    private void ObtenerInicialesN(String nombre){
+        int i=0, x=0, longitud=0;
+        char ch;
+        String inic="";
+        longitud = nombre.length();
+        x=longitud-1;
+        for(i=0; i<=x; i++)
+        {
+            ch=nombre.charAt(i);
+            if(i==0)
+            {
+                inic=inic+ch;
+            }
+            if(ch==' ')
+            {
+                ch = nombre.charAt(i+1);
+                inic=inic+ch;
+                
+            }
+        }
+        iNombre+=inic;
+    }
+    private void ObtenerInicialesA(String apellido){
+        int i=0, x=0, longitud=0;
+        char ch;
+        String inic="";
+        longitud = apellido.length();
+        x=longitud-1;
+        for(i=0; i<=x; i++)
+        {
+            ch=apellido.charAt(i);
+            if(i==0)
+            {
+                inic=inic+ch;
+            }
+            if(ch==' ')
+            {
+                ch = apellido.charAt(i+1);
+                inic=inic+ch;
+                
+            }
+        }
+        iApellido+=inic;
+    }
+    String iDPI="";
+    private void ObtenerDigitosDPI(String dpi){
+        for(int i=0; i<4; i++){
+            iDPI+=dpi.charAt(i);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlta;
