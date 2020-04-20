@@ -5,6 +5,10 @@
  */
 package Formas;
 
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -77,7 +81,7 @@ public class FrmMantCargos extends javax.swing.JInternalFrame {
 
         btnGenCod.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnGenCod.setText("Generar Código");
-        btnGenCod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGenCod.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnGenCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenCodActionPerformed(evt);
@@ -86,15 +90,20 @@ public class FrmMantCargos extends javax.swing.JInternalFrame {
 
         btnAlta.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnAlta.setText("Alta");
-        btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnBaja.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBaja.setText("Baja");
-        btnBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnCambio.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnCambio.setText("Cambio");
-        btnCambio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCambio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCambio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambioActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel5.setText("Buscar por Código:");
@@ -108,11 +117,21 @@ public class FrmMantCargos extends javax.swing.JInternalFrame {
 
         btnBuscarxNom.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBuscarxNom.setText("Buscar");
-        btnBuscarxNom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarxNom.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnBuscarxNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarxNomActionPerformed(evt);
+            }
+        });
 
         btnBuscarxCod.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBuscarxCod.setText("Buscar");
-        btnBuscarxCod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarxCod.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnBuscarxCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarxCodActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelMantPuestoLayout = new javax.swing.GroupLayout(panelMantPuesto);
         panelMantPuesto.setLayout(panelMantPuestoLayout);
@@ -225,6 +244,58 @@ public class FrmMantCargos extends javax.swing.JInternalFrame {
             txtCodPuesto.setText(iTexto.toLowerCase());
         }
     }//GEN-LAST:event_btnGenCodActionPerformed
+
+    private void btnBuscarxNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarxNomActionPerformed
+        try{
+            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            PreparedStatement pst = (PreparedStatement) cn.prepareStatement("select * from puesto where id_puesto = ?");
+            pst.setString(1, txtBuscarxCodigo.getText().trim());
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                txtCodPuesto.setText(rs.getString("id_puesto"));
+                txtNomPuesto.setText(rs.getString("nombre_puesto"));
+                txtEstadoPuesto.setText(rs.getString("estado_puesto"));
+            }else{
+                JOptionPane.showMessageDialog(null, "Puesto no registrado!");
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_btnBuscarxNomActionPerformed
+
+    private void btnBuscarxCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarxCodActionPerformed
+       try{
+            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            PreparedStatement pst = (PreparedStatement) cn.prepareStatement("select * from puesto where nombre_puesto = ?");
+            pst.setString(1, txtBuscarxNom.getText().trim());
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                txtCodPuesto.setText(rs.getString("id_puesto"));
+                txtNomPuesto.setText(rs.getString("nombre_puesto"));
+                txtEstadoPuesto.setText(rs.getString("estado_puesto"));
+            }else{
+                JOptionPane.showMessageDialog(null, "Puesto no registrado!");
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_btnBuscarxCodActionPerformed
+
+    private void btnCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambioActionPerformed
+        try{
+            String ID = txtCodPuesto.getText().trim();
+            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            PreparedStatement pst = (PreparedStatement) cn.prepareStatement("UPDATE puesto SET nombre_puesto=?, estado_puesto=? WHERE id_puesto='"+ID+"'");
+            pst.setString(1, txtNomPuesto.getText().trim());
+            pst.setString(2, txtEstadoPuesto.getText().trim());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Modificación Realizada!");
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_btnCambioActionPerformed
     String iTexto="";
     private void ObtenerInicial(String texto){
         for(int i=0; i<5; i++){
