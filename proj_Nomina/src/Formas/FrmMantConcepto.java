@@ -5,6 +5,8 @@
  */
 package Formas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author diego
@@ -75,6 +77,11 @@ public class FrmMantConcepto extends javax.swing.JInternalFrame {
         btnGenCod.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnGenCod.setText("Generar Código");
         btnGenCod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGenCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenCodActionPerformed(evt);
+            }
+        });
 
         btnAlta.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnAlta.setText("Alta");
@@ -205,6 +212,23 @@ public class FrmMantConcepto extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnGenCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenCodActionPerformed
+        if(txtNomCon.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "INGRESE UN NOMBRE");
+        }else{
+            ObtenerIniciales(txtNomCon.getText());
+            txtCodCon.setText(iTexto.toUpperCase()+iInicial);
+        }
+    }//GEN-LAST:event_btnGenCodActionPerformed
+    String iTexto="", iInicial="";
+    private void ObtenerIniciales(String texto){
+        String efecto;
+        efecto = txtEstadoCon.getText();
+        for(int i=0; i<3; i++){
+            iTexto+=texto.charAt(i);
+        }
+        iInicial+=efecto.charAt(0);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlta;

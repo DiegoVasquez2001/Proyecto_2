@@ -6,6 +6,9 @@
 
 package Formas;
 
+import java.util.Random;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author diego
@@ -74,6 +77,11 @@ public class FrmMantDeptos extends javax.swing.JInternalFrame {
         btnGenCod.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnGenCod.setText("Generar Código");
         btnGenCod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGenCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenCodActionPerformed(evt);
+            }
+        });
 
         btnAlta.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnAlta.setText("Alta");
@@ -203,6 +211,25 @@ public class FrmMantDeptos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnGenCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenCodActionPerformed
+        String validacion;
+        Random random = new Random();
+        int valorRandom = random.nextInt(9999)+1;
+        validacion=txtNomDepto.getText();
+        if(validacion.equals("")){
+            JOptionPane.showMessageDialog(null, "Por Favor, ingrese un nombre para el Departamento");
+        }else{
+            ObtenerInicial(txtNomDepto.getText());
+            iTexto+=valorRandom;
+            txtCodDepto.setText(iTexto.toLowerCase());
+        }
+    }//GEN-LAST:event_btnGenCodActionPerformed
+    String iTexto="";
+    private void ObtenerInicial(String texto){
+        for(int i=0; i<5; i++){
+            iTexto=iTexto+texto.charAt(i);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlta;
