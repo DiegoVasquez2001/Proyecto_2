@@ -5,6 +5,10 @@
  */
 package Formas;
 
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -76,7 +80,7 @@ public class FrmMantConcepto extends javax.swing.JInternalFrame {
 
         btnGenCod.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnGenCod.setText("Generar Código");
-        btnGenCod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGenCod.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnGenCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenCodActionPerformed(evt);
@@ -85,15 +89,20 @@ public class FrmMantConcepto extends javax.swing.JInternalFrame {
 
         btnAlta.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnAlta.setText("Alta");
-        btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnBaja.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBaja.setText("Baja");
-        btnBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnCambio.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnCambio.setText("Cambio");
-        btnCambio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCambio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCambio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambioActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel5.setText("Buscar por Código:");
@@ -107,11 +116,21 @@ public class FrmMantConcepto extends javax.swing.JInternalFrame {
 
         btnBuscaxCod.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBuscaxCod.setText("Buscar");
-        btnBuscaxCod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscaxCod.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnBuscaxCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscaxCodActionPerformed(evt);
+            }
+        });
 
         btnBuscaxNom.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBuscaxNom.setText("Buscar");
-        btnBuscaxNom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscaxNom.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnBuscaxNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscaxNomActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelMantPuestoLayout = new javax.swing.GroupLayout(panelMantPuesto);
         panelMantPuesto.setLayout(panelMantPuestoLayout);
@@ -220,6 +239,58 @@ public class FrmMantConcepto extends javax.swing.JInternalFrame {
             txtCodCon.setText(iTexto.toUpperCase()+iInicial);
         }
     }//GEN-LAST:event_btnGenCodActionPerformed
+
+    private void btnBuscaxCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaxCodActionPerformed
+        try{
+            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            PreparedStatement pst = (PreparedStatement) cn.prepareStatement("select * from concepto where id_concepto = ?");
+            pst.setString(1, txtBuscaxCod.getText().trim());
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                txtCodCon.setText(rs.getString("id_concepto"));
+                txtNomCon.setText(rs.getString("nombre_concepto"));
+                txtEstadoCon.setText(rs.getString("efecto_concepto"));
+            }else{
+                JOptionPane.showMessageDialog(null, "Concepto no registrado!");
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_btnBuscaxCodActionPerformed
+
+    private void btnBuscaxNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaxNomActionPerformed
+        try{
+            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            PreparedStatement pst = (PreparedStatement) cn.prepareStatement("select * from concepto where nombre_concepto = ?");
+            pst.setString(1, txtBuscaxNom.getText().trim());
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                txtCodCon.setText(rs.getString("id_concepto"));
+                txtNomCon.setText(rs.getString("nombre_concepto"));
+                txtEstadoCon.setText(rs.getString("efecto_concepto"));
+            }else{
+                JOptionPane.showMessageDialog(null, "Concepto no registrado!");
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_btnBuscaxNomActionPerformed
+
+    private void btnCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambioActionPerformed
+        try{
+            String ID = txtCodCon.getText().trim();
+            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            PreparedStatement pst = (PreparedStatement) cn.prepareStatement("UPDATE concepto SET nombre_concepto=?, efecto_concepto=? WHERE id_concepto='"+ID+"'");
+            pst.setString(1, txtNomCon.getText().trim());
+            pst.setString(2, txtEstadoCon.getText().trim());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Modificación Realizada!");
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_btnCambioActionPerformed
     String iTexto="", iInicial="";
     private void ObtenerIniciales(String texto){
         String efecto;
