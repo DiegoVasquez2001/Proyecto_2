@@ -5,6 +5,10 @@
  */
 package Formas;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
 /**
  *
  * @author diego
@@ -135,6 +139,11 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         btnBaja.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBaja.setText("Baja");
         btnBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBajaActionPerformed(evt);
+            }
+        });
 
         btnCambio.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnCambio.setText("Cambio");
@@ -348,6 +357,31 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         ObtenerDigitosDPI(txtDPIEmp.getText());
         txtCarnetEmp.setText(iNombre.toUpperCase()+iApellido.toUpperCase()+iDPI);
     }//GEN-LAST:event_btnGenCodActionPerformed
+
+    private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
+        // TODO add your handling code here:
+         try {
+             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            PreparedStatement pst = cn.prepareStatement("delete from puesto where id_puesto = ?");
+            
+            pst.setString(1, txtBuscaxCarnet.getText().trim());
+            pst.executeUpdate();
+            
+            txtApeEmp.setText("");
+            txtCarnetEmp.setText("");
+            txtCelEmp.setText("");
+            txtDPIEmp.setText("");
+            txtDepto.setText("");
+            txtDomEmp.setText("");
+            txtEstatusEmp.setText("");
+            txtFNac.setText("");
+            txtNomEmp.setText("");
+            txtPuesto.setText("");
+            txtTelEmp.setText("");
+            
+        } catch (Exception e) {
+        }    
+    }//GEN-LAST:event_btnBajaActionPerformed
     String iNombre=""; String iApellido="";
     private void ObtenerInicialesN(String nombre){
         int i=0, x=0, longitud=0;
