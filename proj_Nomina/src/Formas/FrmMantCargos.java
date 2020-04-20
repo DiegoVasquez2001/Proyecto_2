@@ -5,7 +5,12 @@
  */
 package Formas;
 
+
 import java.util.Random;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -87,10 +92,20 @@ public class FrmMantCargos extends javax.swing.JInternalFrame {
         btnAlta.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnAlta.setText("Alta");
         btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAltaActionPerformed(evt);
+            }
+        });
 
         btnBaja.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBaja.setText("Baja");
         btnBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBajaActionPerformed(evt);
+            }
+        });
 
         btnCambio.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnCambio.setText("Cambio");
@@ -100,19 +115,39 @@ public class FrmMantCargos extends javax.swing.JInternalFrame {
         jLabel5.setText("Buscar por Código:");
 
         txtBuscarxCodigo.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtBuscarxCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarxCodigoActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel6.setText("Buscar por Nombre:");
 
         txtBuscarxNom.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtBuscarxNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarxNomActionPerformed(evt);
+            }
+        });
 
         btnBuscarxNom.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBuscarxNom.setText("Buscar");
         btnBuscarxNom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarxNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarxNomActionPerformed(evt);
+            }
+        });
 
         btnBuscarxCod.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBuscarxCod.setText("Buscar");
         btnBuscarxCod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarxCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarxCodActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelMantPuestoLayout = new javax.swing.GroupLayout(panelMantPuesto);
         panelMantPuesto.setLayout(panelMantPuestoLayout);
@@ -225,6 +260,44 @@ public class FrmMantCargos extends javax.swing.JInternalFrame {
             txtCodPuesto.setText(iTexto.toLowerCase());
         }
     }//GEN-LAST:event_btnGenCodActionPerformed
+
+    private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
+        // TODO add your handling code here:
+                //Eliminar por Codigo
+         try {
+             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            PreparedStatement pst = cn.prepareStatement("delete from puesto where id_puesto = ?");
+            
+            pst.setString(1, txtBuscarxCodigo.getText().trim());
+            pst.executeUpdate();
+            
+            txtCodPuesto.setText("");
+            txtNomPuesto.setText("");
+            txtEstadoPuesto.setText("");
+            
+        } catch (Exception e) {
+        }    
+    }//GEN-LAST:event_btnBajaActionPerformed
+
+    private void txtBuscarxCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarxCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarxCodigoActionPerformed
+
+    private void btnBuscarxCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarxCodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarxCodActionPerformed
+
+    private void txtBuscarxNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarxNomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarxNomActionPerformed
+
+    private void btnBuscarxNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarxNomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarxNomActionPerformed
+
+    private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAltaActionPerformed
     String iTexto="";
     private void ObtenerInicial(String texto){
         for(int i=0; i<5; i++){

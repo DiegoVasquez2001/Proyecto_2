@@ -6,6 +6,9 @@
 
 package Formas;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -86,10 +89,20 @@ public class FrmMantDeptos extends javax.swing.JInternalFrame {
         btnAlta.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnAlta.setText("Alta");
         btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAltaActionPerformed(evt);
+            }
+        });
 
         btnBaja.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBaja.setText("Baja");
         btnBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBajaActionPerformed(evt);
+            }
+        });
 
         btnCambio.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnCambio.setText("Cambio");
@@ -224,6 +237,27 @@ public class FrmMantDeptos extends javax.swing.JInternalFrame {
             txtCodDepto.setText(iTexto.toLowerCase());
         }
     }//GEN-LAST:event_btnGenCodActionPerformed
+
+    private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAltaActionPerformed
+
+    private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
+        // TODO add your handling code here:
+        try {
+             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            PreparedStatement pst = cn.prepareStatement("delete from departamento where id_puesto = ?");
+            
+            pst.setString(1, txtBuscaxCod.getText().trim());
+            pst.executeUpdate();
+            
+            txtCodDepto.setText("");
+            txtNomDepto.setText("");
+            txtEstadoDepto.setText("");
+            
+        } catch (Exception e) {
+        }    
+    }//GEN-LAST:event_btnBajaActionPerformed
     String iTexto="";
     private void ObtenerInicial(String texto){
         for(int i=0; i<5; i++){

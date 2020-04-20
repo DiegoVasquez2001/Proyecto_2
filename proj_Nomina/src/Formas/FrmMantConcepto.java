@@ -5,6 +5,9 @@
  */
 package Formas;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
 /**
@@ -90,6 +93,11 @@ public class FrmMantConcepto extends javax.swing.JInternalFrame {
         btnBaja.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBaja.setText("Baja");
         btnBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBajaActionPerformed(evt);
+            }
+        });
 
         btnCambio.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnCambio.setText("Cambio");
@@ -220,6 +228,23 @@ public class FrmMantConcepto extends javax.swing.JInternalFrame {
             txtCodCon.setText(iTexto.toUpperCase()+iInicial);
         }
     }//GEN-LAST:event_btnGenCodActionPerformed
+
+    private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
+        // TODO add your handling code here:
+        try {
+             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            PreparedStatement pst = cn.prepareStatement("delete from concepto where id_concepto = ?");
+            
+            pst.setString(1, txtBuscaxCod.getText().trim());
+            pst.executeUpdate();
+            
+            txtCodCon.setText("");
+            txtNomCon.setText("");
+            txtEstadoCon.setText("");
+            
+        } catch (Exception e) {
+        }    
+    }//GEN-LAST:event_btnBajaActionPerformed
     String iTexto="", iInicial="";
     private void ObtenerIniciales(String texto){
         String efecto;
