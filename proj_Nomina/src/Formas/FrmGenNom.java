@@ -24,7 +24,7 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
      private void autoCompleteCarnet(){
         TextAutoCompleter txtCarnet = new TextAutoCompleter(txtCarEmp);
         try{
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
             Statement sent = con.createStatement();
             ResultSet rs = sent.executeQuery("SELECT carnet_empleado FROM empleado");
             while(rs.next()){
@@ -68,6 +68,7 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
         setTitle("Generar Nómina");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 254));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel1.setText("GENERAR NÓMINA");
@@ -101,7 +102,7 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
 
         btnAceptar.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnAceptar.setText("Aceptar");
-        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
@@ -190,7 +191,7 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
    
     private void buscarNomTrabajador(String carnetEmp){
         try{
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
             Statement sent = con.createStatement();
             ResultSet rs = sent.executeQuery("SELECT nombre_empleado, apellidos_empleado FROM empleado WHERE carnet_empleado ='"+carnetEmp+"'");
             while(rs.next()){
@@ -228,6 +229,7 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
             String carnet = txtCarEmp.getText();
             codNomina+=(carnet+varFecha);
             txtCodNom.setText(codNomina);
+            
         }catch(Exception ex)
         {
             JOptionPane.showMessageDialog(null, ex.toString());
