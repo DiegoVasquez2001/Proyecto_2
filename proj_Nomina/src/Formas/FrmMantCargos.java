@@ -95,6 +95,11 @@ public class FrmMantCargos extends javax.swing.JInternalFrame {
         btnBaja.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBaja.setText("Baja");
         btnBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBajaActionPerformed(evt);
+            }
+        });
 
         btnCambio.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnCambio.setText("Cambio");
@@ -296,6 +301,24 @@ public class FrmMantCargos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, ex.toString());
         }
     }//GEN-LAST:event_btnCambioActionPerformed
+
+    private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
+        // TODO add your handling code here:
+                //Eliminar por Codigo
+         try {
+             java.sql.Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            java.sql.PreparedStatement pst = cn.prepareStatement("delete from puesto where id_puesto = ?");
+            
+            pst.setString(1, txtBuscarxCodigo.getText().trim());
+            pst.executeUpdate();
+            
+            txtCodPuesto.setText("");
+            txtNomPuesto.setText("");
+            txtEstadoPuesto.setText("");
+            
+        } catch (Exception e) {
+        }    
+    }//GEN-LAST:event_btnBajaActionPerformed
     String iTexto="";
     private void ObtenerInicial(String texto){
         for(int i=0; i<5; i++){
