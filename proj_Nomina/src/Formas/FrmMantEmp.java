@@ -25,7 +25,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
     private void CargarPuestos(){
         TextAutoCompleter txtPuestos = new TextAutoCompleter(txtPuesto);
         try{
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
             Statement sent = con.createStatement();
             ResultSet rs = sent.executeQuery("SELECT nombre_puesto FROM puesto");
             while(rs.next()){
@@ -39,7 +39,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
     private void CargarDeptos(){
         TextAutoCompleter txtPuestos = new TextAutoCompleter(txtDepto);
         try{
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
             Statement sent = con.createStatement();
             ResultSet rs = sent.executeQuery("SELECT nombre_departamento FROM departamento");
             while(rs.next()){
@@ -426,7 +426,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
     private void buscarIDPuesto(String nombrePuesto){
         try
         {
-            com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
             com.mysql.jdbc.PreparedStatement pst = (com.mysql.jdbc.PreparedStatement) cn.prepareStatement("select id_puesto from puesto where nombre_puesto = ?");
             pst.setString(1, txtPuesto.getText().trim());
             ResultSet rs = pst.executeQuery();
@@ -443,7 +443,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
     private void buscarIDDepto(String nombreDepto){
         try
         {
-             com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+             com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
             com.mysql.jdbc.PreparedStatement pst = (com.mysql.jdbc.PreparedStatement) cn.prepareStatement("select id_departamento from departamento where nombre_departamento = ?");
             pst.setString(1, txtDepto.getText().trim());
             ResultSet rs = pst.executeQuery();
@@ -461,7 +461,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         buscarIDDepto(txtDepto.getText());
         try
         {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
             PreparedStatement pst = cn.prepareStatement("insert into empleado values(?,?,?,?,?,?,?,?,?,?,?)");
             
             pst.setString(1, txtCarnetEmp.getText().trim());

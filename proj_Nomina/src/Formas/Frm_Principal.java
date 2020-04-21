@@ -7,6 +7,7 @@ package Formas;
 
 import java.awt.Dimension;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -64,7 +65,7 @@ public class Frm_Principal extends javax.swing.JFrame {
             .addGap(0, 579, Short.MAX_VALUE)
         );
 
-        jMenuBar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenuBar2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jMenu5.setText("Operaciones");
         jMenu5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -73,6 +74,11 @@ public class Frm_Principal extends javax.swing.JFrame {
         jMenu1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         jMenuItem1.setText("Cálcular Nóminas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Imprimir Nóminas");
@@ -182,6 +188,13 @@ public class Frm_Principal extends javax.swing.JFrame {
                 Workbench.add(frm);
                 frm.setVisible(true);
                 break;
+            case "GenNom":
+                frm = new FrmGenNom();
+                Dimension frameSize5 = frm.getSize();
+                frm.setLocation((workbenchSize.width - frameSize5.width)/2, (workbenchSize.height - frameSize5.height)/2);
+                Workbench.add(frm);
+                frm.setVisible(true);
+                break;
         }
         
     }
@@ -200,6 +213,16 @@ public class Frm_Principal extends javax.swing.JFrame {
     private void FrmMantEmp_CallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FrmMantEmp_CallActionPerformed
         Llamar_Formas("Empleado");
     }//GEN-LAST:event_FrmMantEmp_CallActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       int r = JOptionPane.showConfirmDialog(null, "¿DESEA GENERAR UNA NUEVA NÓMINA?", "CONFIRMACIÓN", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+       if(r==0){
+           Llamar_Formas("GenNom");
+       }
+       else{
+           JOptionPane.showMessageDialog(null, "NO");
+       }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
