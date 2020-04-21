@@ -257,7 +257,7 @@ public class FrmMantCargos extends javax.swing.JInternalFrame {
 
     private void btnBuscarxNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarxNomActionPerformed
         try{
-            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
             PreparedStatement pst = (PreparedStatement) cn.prepareStatement("select * from puesto where id_puesto = ?");
             pst.setString(1, txtBuscarxCodigo.getText().trim());
             ResultSet rs = pst.executeQuery();
@@ -276,7 +276,7 @@ public class FrmMantCargos extends javax.swing.JInternalFrame {
 
     private void btnBuscarxCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarxCodActionPerformed
        try{
-            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
             PreparedStatement pst = (PreparedStatement) cn.prepareStatement("select * from puesto where nombre_puesto = ?");
             pst.setString(1, txtBuscarxNom.getText().trim());
             ResultSet rs = pst.executeQuery();
@@ -296,7 +296,7 @@ public class FrmMantCargos extends javax.swing.JInternalFrame {
     private void btnCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambioActionPerformed
         try{
             String ID = txtCodPuesto.getText().trim();
-            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
             PreparedStatement pst = (PreparedStatement) cn.prepareStatement("UPDATE puesto SET nombre_puesto=?, estado_puesto=? WHERE id_puesto='"+ID+"'");
             pst.setString(1, txtNomPuesto.getText().trim());
             pst.setString(2, txtEstadoPuesto.getText().trim());
@@ -328,7 +328,7 @@ public class FrmMantCargos extends javax.swing.JInternalFrame {
 
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
         try{
-            java.sql.Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            java.sql.Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
             java.sql.PreparedStatement pst = cn.prepareStatement("insert into puesto values(?,?,?)");
             pst.setString(1, txtCodPuesto.getText().trim());
             pst.setString(2, txtNomPuesto.getText().trim());
