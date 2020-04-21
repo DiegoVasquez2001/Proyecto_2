@@ -5,9 +5,13 @@
  */
 package Formas;
 
+import com.mxrck.autocompleter.TextAutoCompleter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,8 +22,38 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
     /**
      * Creates new form FrmMantEmp
      */
+    private void CargarPuestos(){
+        TextAutoCompleter txtPuestos = new TextAutoCompleter(txtPuesto);
+        try{
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            Statement sent = con.createStatement();
+            ResultSet rs = sent.executeQuery("SELECT nombre_puesto FROM puesto");
+            while(rs.next()){
+                txtPuestos.addItem(rs.getString("nombre_puesto"));
+            }
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }
+    private void CargarDeptos(){
+        TextAutoCompleter txtPuestos = new TextAutoCompleter(txtDepto);
+        try{
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            Statement sent = con.createStatement();
+            ResultSet rs = sent.executeQuery("SELECT nombre_departamento FROM departamento");
+            while(rs.next()){
+                txtPuestos.addItem(rs.getString("nombre_departamento"));
+            }
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }
     public FrmMantEmp() {
         initComponents();
+        CargarPuestos();
+        CargarDeptos();
     }
 
     /**
