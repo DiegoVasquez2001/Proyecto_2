@@ -215,12 +215,12 @@ public class Frm_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_FrmMantEmp_CallActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-       int r = JOptionPane.showConfirmDialog(null, "¿DESEA GENERAR UNA NUEVA NÓMINA?", "CONFIRMACIÓN", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+       int r = JOptionPane.showConfirmDialog(null, "¿DESEA GENERAR UNA NUEVA NÓMINA?","", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
        if(r==0){
            Llamar_Formas("GenNom");
        }
        else{
-           JOptionPane.showMessageDialog(null, "NO");
+           
        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 

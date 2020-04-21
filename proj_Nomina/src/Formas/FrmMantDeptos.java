@@ -289,7 +289,7 @@ public class FrmMantDeptos extends javax.swing.JInternalFrame {
 
     private void btnBuscarxNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarxNomActionPerformed
         try{
-            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
             PreparedStatement pst = (PreparedStatement) cn.prepareStatement("select * from departamento where nombre_departamento = ?");
             pst.setString(1, txtBuscaxNom.getText().trim());
             ResultSet rs = pst.executeQuery();
@@ -309,7 +309,7 @@ public class FrmMantDeptos extends javax.swing.JInternalFrame {
     private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
         // TODO add your handling code here:
         try {
-             java.sql.Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+             java.sql.Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
             java.sql.PreparedStatement pst = cn.prepareStatement("delete from departamento where id_departamento = ?");
             
             pst.setString(1, txtBuscaxCod.getText().trim());
@@ -326,7 +326,7 @@ public class FrmMantDeptos extends javax.swing.JInternalFrame {
 
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
         try{
-            java.sql.Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            java.sql.Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
             java.sql.PreparedStatement pst = cn.prepareStatement("insert into departamento values(?,?,?)");
             pst.setString(1, txtCodDepto.getText().trim());
             pst.setString(2, txtNomDepto.getText().trim());

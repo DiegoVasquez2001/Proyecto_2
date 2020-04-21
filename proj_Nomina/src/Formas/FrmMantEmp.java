@@ -461,7 +461,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         buscarIDDepto(txtDepto.getText());
         try
         {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
             PreparedStatement pst = cn.prepareStatement("insert into empleado values(?,?,?,?,?,?,?,?,?,?,?)");
             
             pst.setString(1, txtCarnetEmp.getText().trim());
