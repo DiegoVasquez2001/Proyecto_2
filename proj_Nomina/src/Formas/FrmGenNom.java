@@ -229,7 +229,26 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
             String carnet = txtCarEmp.getText();
             codNomina+=(carnet+varFecha);
             txtCodNom.setText(codNomina);
-            
+            int r = JOptionPane.showConfirmDialog(null, "¿DESEA PROCEDER?","", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(r==0){
+                try{
+                    java.sql.Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+                    java.sql.PreparedStatement pst = cn.prepareStatement("insert into nomina values(?,?,?,?,?)");
+                    pst.setString(1, txtCodNom.getText().trim());
+                    pst.setString(2, txtFI.getText().trim());
+                    pst.setString(3, txtFF.getText().trim());
+                    pst.setFloat(4, 0);
+                    pst.setString(5, txtCarEmp.getText().trim());
+                    pst.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Registro Realizado!");
+                }
+                catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, ex.toString());
+                }
+            }
+            else{
+                this.dispose();
+            }
         }catch(Exception ex)
         {
             JOptionPane.showMessageDialog(null, ex.toString());
