@@ -91,6 +91,11 @@ public class FrmMantCargos extends javax.swing.JInternalFrame {
         btnAlta.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnAlta.setText("Alta");
         btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAltaActionPerformed(evt);
+            }
+        });
 
         btnBaja.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBaja.setText("Baja");
@@ -317,8 +322,24 @@ public class FrmMantCargos extends javax.swing.JInternalFrame {
             txtEstadoPuesto.setText("");
             
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
         }    
     }//GEN-LAST:event_btnBajaActionPerformed
+
+    private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
+        try{
+            java.sql.Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            java.sql.PreparedStatement pst = cn.prepareStatement("insert into puesto values(?,?,?)");
+            pst.setString(1, txtCodPuesto.getText().trim());
+            pst.setString(2, txtNomPuesto.getText().trim());
+            pst.setString(3, txtEstadoPuesto.getText().trim());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro Realizado!");
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_btnAltaActionPerformed
     String iTexto="";
     private void ObtenerInicial(String texto){
         for(int i=0; i<5; i++){

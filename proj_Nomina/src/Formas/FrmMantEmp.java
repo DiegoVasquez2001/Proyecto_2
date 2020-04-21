@@ -419,6 +419,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
             txtTelEmp.setText("");
             
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
         }    
     }//GEN-LAST:event_btnBajaActionPerformed
     String id_Puesto="";
