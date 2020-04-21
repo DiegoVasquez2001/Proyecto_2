@@ -169,6 +169,11 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         btnAlta.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnAlta.setText("Alta");
         btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAltaActionPerformed(evt);
+            }
+        });
 
         btnBaja.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBaja.setText("Baja");
@@ -416,6 +421,67 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         } catch (Exception e) {
         }    
     }//GEN-LAST:event_btnBajaActionPerformed
+    String id_Puesto="";
+    private void buscarIDPuesto(String nombrePuesto){
+        try
+        {
+            com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            com.mysql.jdbc.PreparedStatement pst = (com.mysql.jdbc.PreparedStatement) cn.prepareStatement("select id_puesto from puesto where nombre_puesto = ?");
+            pst.setString(1, txtPuesto.getText().trim());
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                id_Puesto = rs.getString("id_puesto");
+            }
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }
+    String id_Depto="";
+    private void buscarIDDepto(String nombreDepto){
+        try
+        {
+             com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            com.mysql.jdbc.PreparedStatement pst = (com.mysql.jdbc.PreparedStatement) cn.prepareStatement("select id_departamento from departamento where nombre_departamento = ?");
+            pst.setString(1, txtDepto.getText().trim());
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                id_Depto = rs.getString("id_departamento");
+            }
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }
+    private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
+        buscarIDPuesto(txtPuesto.getText());
+        buscarIDDepto(txtDepto.getText());
+        try
+        {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            PreparedStatement pst = cn.prepareStatement("insert into empleado values(?,?,?,?,?,?,?,?,?,?,?)");
+            
+            pst.setString(1, txtCarnetEmp.getText().trim());
+            pst.setString(2, txtDPIEmp.getText().trim());
+            pst.setString(3, txtNomEmp.getText().trim());
+            pst.setString(4, txtApeEmp.getText().trim());
+            pst.setString(5, txtDomEmp.getText().trim());
+            pst.setString(6, txtTelEmp.getText().trim());
+            pst.setString(7, txtCelEmp.getText().trim());
+            pst.setString(8, txtFNac.getText().trim());
+            pst.setString(9, txtEstatusEmp.getText().trim());
+            pst.setString(10, id_Puesto);
+            pst.setString(11, id_Depto);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro Realizado!");
+            
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_btnAltaActionPerformed
     String iNombre=""; String iApellido="";
     private void ObtenerInicialesN(String nombre){
         int i=0, x=0, longitud=0;
