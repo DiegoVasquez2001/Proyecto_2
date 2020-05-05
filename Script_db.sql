@@ -44,19 +44,16 @@ fecha_fin date Not Null
 CREATE TABLE nomina_empleado
 (id_nomEmp Varchar(15) Primary Key,
 fk_empleado Varchar(15) Not Null,
-fk_nomina Varchar(20) Not Null,
-fk_detalle Varchar(15) Not Null
+fk_nomina Varchar(20) Not Null
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE detalle_nomina
 (id_detalle Varchar(15) Primary Key,
+fk_nominae Varchar(15) Not Null,
 fk_concepto Varchar(10) Not Null,
 valor_concepto float(10,2) Not Null
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE nomina_empleado
-ADD CONSTRAINT fk_detalle
-FOREIGN KEY (fk_detalle) REFERENCES detalle_nomina(id_detalle);
 
 ALTER TABLE nomina_empleado
 ADD CONSTRAINT fk_nomina
@@ -69,3 +66,19 @@ FOREIGN KEY (fk_empleado) REFERENCES empleado(carnet_empleado);
 ALTER TABLE detalle_nomina
 ADD CONSTRAINT fk_concepto
 FOREIGN KEY (fk_concepto) REFERENCES concepto(id_concepto);
+
+ALTER TABLE detalle_nomina
+ADD CONSTRAINT fk_nominae
+FOREIGN KEY (fk_nominae) REFERENCES nomina_empleado(id_nomEmp);
+
+ALTER TABLE nomina_empleado
+ADD CONSTRAINT fk_empleado
+FOREIGN KEY (fk_empleado) REFERENCES empleado(carnet_empleado);
+
+ALTER TABLE nomina_empleado
+ADD CONSTRAINT fk_nomina
+FOREIGN KEY (fk_nomina) REFERENCES nomina(id_nomina);
+
+ALTER TABLE detalle_nomina
+MODIFY COLUMN id_detalle int auto_increment;
+
