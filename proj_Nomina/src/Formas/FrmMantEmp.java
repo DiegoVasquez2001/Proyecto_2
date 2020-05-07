@@ -6,11 +6,15 @@
 package Formas;
 
 import com.mxrck.autocompleter.TextAutoCompleter;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -54,6 +58,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         initComponents();
         CargarPuestos();
         CargarDeptos();
+        txtFNac.setForeground(Color.white);
     }
 
     /**
@@ -224,6 +229,11 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         btnBusca.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBusca.setText("Buscar");
         btnBusca.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscaActionPerformed(evt);
+            }
+        });
 
         btnGenCod.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnGenCod.setText("Generar Carnet");
@@ -240,9 +250,12 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
 
         txtSBase.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
+        txtFNac.setBackground(new java.awt.Color(255, 255, 255));
         txtFNac.setForeground(new java.awt.Color(255, 255, 255));
         txtFNac.setDateFormatString("dd/MM/yyyy");
         txtFNac.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtFNac.setMaxSelectableDate(new java.util.Date(253370790083000L));
+        txtFNac.setMinSelectableDate(new java.util.Date(-62135744317000L));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -436,7 +449,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
          try {
              Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
-            PreparedStatement pst = cn.prepareStatement("delete from puesto where carnet_empleado = ?");
+            PreparedStatement pst = cn.prepareStatement("delete from empleado where carnet_empleado = ?");
             
             pst.setString(1, txtBuscaxCarnet.getText().trim());
             pst.executeUpdate();
@@ -493,6 +506,9 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
         buscarIDPuesto(txtPuesto.getText());
         buscarIDDepto(txtDepto.getText());
+        Date fecha;
+        fecha = txtFNac.getDate();
+        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-mm-dd");
         try
         {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
@@ -505,7 +521,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
             pst.setString(5, txtDomEmp.getText().trim());
             pst.setString(6, txtTelEmp.getText().trim());
             pst.setString(7, txtCelEmp.getText().trim());
-            pst.setString(8, txtFNac.getDate().toString().trim());
+            pst.setString(8, dt1.format(fecha));
             pst.setString(9, txtEstatusEmp.getText().trim());
             pst.setString(10, id_Puesto);
             pst.setString(11, id_Depto);
@@ -522,6 +538,10 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
     private void btnCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCambioActionPerformed
+
+    private void btnBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscaActionPerformed
     String iNombre=""; String iApellido="";
     private void ObtenerInicialesN(String nombre){
         int i=0, x=0, longitud=0;
