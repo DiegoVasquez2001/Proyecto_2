@@ -1,4 +1,4 @@
-CREATE DATABASE planilla_sys;
+-- CREATE DATABASE planilla_sys;
 USE planilla_sys;
 
 CREATE TABLE departamento
@@ -23,8 +23,9 @@ telefono_empleado int(8) Not Null,
 celular_empleado int(8) Not Null,
 fecha_nacimiento date Not Null,
 estatus_empleado Varchar(1) Not Null,
-fk_puesto Varchar(10),
-fk_departamento Varchar(10),
+fk_puesto Varchar(10) not null,
+fk_departamento Varchar(10) not null,
+sueldo_base float(10,2) not null,
 FOREIGN KEY (fk_puesto) REFERENCES puesto(id_puesto),
 FOREIGN KEY (fk_departamento) REFERENCES departamento(id_departamento)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -72,13 +73,20 @@ ADD CONSTRAINT fk_nominae
 FOREIGN KEY (fk_nominae) REFERENCES nomina_empleado(id_nomEmp);
 
 ALTER TABLE nomina_empleado
-ADD CONSTRAINT fk_empleado
-FOREIGN KEY (fk_empleado) REFERENCES empleado(carnet_empleado);
-
-ALTER TABLE nomina_empleado
 ADD CONSTRAINT fk_nomina
 FOREIGN KEY (fk_nomina) REFERENCES nomina(id_nomina);
 
 ALTER TABLE detalle_nomina
 MODIFY COLUMN id_detalle int auto_increment;
 
+CREATE TABLE impresion_nomina
+(id_impresion int auto_increment primary key,
+fk_nomEmp varchar(15) not null,
+ingresos_totales float(10,2) not null,
+egresos_totales float(10,2) not null,
+total_liquido float(10,2) not null
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE impresion_nomina
+ADD CONSTRAINT fk_nomEmp
+FOREIGN KEY (fk_nomEmp) REFERENCES nomina_empleado(id_nomEmp);
