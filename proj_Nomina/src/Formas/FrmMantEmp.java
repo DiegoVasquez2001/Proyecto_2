@@ -102,47 +102,59 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         jLabel16 = new javax.swing.JLabel();
         txtSBase = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(204, 204, 254));
+        setBackground(new java.awt.Color(51, 51, 51));
         setClosable(true);
         setTitle("Mantenimiento Empleados");
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 254));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MANTENIMIENTO EMPLEADOS");
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Carnet Empleado:");
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("DPI Empleado:");
 
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre Empleado:");
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Apellidos Empleado:");
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Domicilio Empleado:");
 
         jLabel7.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Teléfono Empleado:");
 
         jLabel8.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Célular Empleado:");
 
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Fecha Nacimiento:");
 
         jLabel10.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Estatus Empleado:");
 
         jLabel11.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Puesto:");
 
         jLabel12.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Departamento:");
 
         txtCarnetEmp.setEditable(false);
@@ -196,16 +208,19 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         });
 
         jLabel13.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Carnet Empleado:");
 
         txtBuscaxCarnet.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("DPI Empleado:");
 
         txtBuscaxDPI.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("BUSQUEDA");
 
         btnBusca.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -222,6 +237,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         });
 
         jLabel16.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Sueldo Base:");
 
         txtSBase.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -298,9 +314,8 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
                                 .addGap(75, 75, 75)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtSBase, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtPuesto)
-                                        .addComponent(txtDepto, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))))
+                                    .addComponent(txtPuesto, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDepto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -380,7 +395,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtSBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAlta)
                     .addComponent(btnBaja)

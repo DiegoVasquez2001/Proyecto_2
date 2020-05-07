@@ -5,7 +5,7 @@
  */
 package Formas;
 
-import com.jtattoo.plaf.acryl.AcrylLookAndFeel;
+import com.jtattoo.plaf.noire.NoireLookAndFeel;
 import java.awt.Dimension;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
@@ -55,7 +55,7 @@ public class Frm_Principal extends javax.swing.JFrame {
         setTitle("Sistema de Nóminas");
         setResizable(false);
 
-        Workbench.setBackground(new java.awt.Color(80, 80, 80));
+        Workbench.setBackground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout WorkbenchLayout = new javax.swing.GroupLayout(Workbench);
         Workbench.setLayout(WorkbenchLayout);
@@ -73,6 +73,7 @@ public class Frm_Principal extends javax.swing.JFrame {
         jMenu5.setText("Operaciones");
         jMenu5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/calculator_1616.png"))); // NOI18N
         jMenu1.setText("Cálcular Nóminas");
         jMenu1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
@@ -89,6 +90,7 @@ public class Frm_Principal extends javax.swing.JFrame {
 
         jMenu5.add(jMenu1);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/database_up1616.png"))); // NOI18N
         jMenu2.setText("Mantenimientos");
         jMenu2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
@@ -128,6 +130,7 @@ public class Frm_Principal extends javax.swing.JFrame {
         jMenu5.add(jSeparator1);
 
         Salir_Sistema.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        Salir_Sistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/window_remove1616.png"))); // NOI18N
         Salir_Sistema.setText("Salir del Sistema");
         Salir_Sistema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,36 +232,13 @@ public class Frm_Principal extends javax.swing.JFrame {
 
     /**
      * @param args the command line arguments
+     * @throws javax.swing.UnsupportedLookAndFeelException
      */
     public static void main(String args[]) throws UnsupportedLookAndFeelException {
-        /* Set the Windows look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        /*try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frm_Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frm_Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frm_Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frm_Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }*/
-        //</editor-fold>
-        UIManager.setLookAndFeel(new AcrylLookAndFeel());
+        UIManager.setLookAndFeel(new NoireLookAndFeel());
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Frm_Principal().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Frm_Principal().setVisible(true);
         });
     }
 
