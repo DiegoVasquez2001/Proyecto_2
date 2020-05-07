@@ -85,7 +85,6 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         txtDomEmp = new javax.swing.JTextField();
         txtTelEmp = new javax.swing.JTextField();
         txtCelEmp = new javax.swing.JTextField();
-        txtFNac = new javax.swing.JTextField();
         txtEstatusEmp = new javax.swing.JTextField();
         txtPuesto = new javax.swing.JTextField();
         txtDepto = new javax.swing.JTextField();
@@ -101,6 +100,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         btnGenCod = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         txtSBase = new javax.swing.JTextField();
+        txtFNac = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setClosable(true);
@@ -172,8 +172,6 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
 
         txtCelEmp.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        txtFNac.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-
         txtEstatusEmp.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         txtPuesto.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -242,6 +240,10 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
 
         txtSBase.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
+        txtFNac.setForeground(new java.awt.Color(255, 255, 255));
+        txtFNac.setDateFormatString("dd/MM/yyyy");
+        txtFNac.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -293,14 +295,6 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
                                 .addComponent(txtDPIEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(58, 58, 58)
-                                .addComponent(txtFNac, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(59, 59, 59)
-                                .addComponent(txtEstatusEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(62, 62, 62)
                                 .addComponent(txtCarnetEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,7 +309,15 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtSBase, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                                     .addComponent(txtPuesto, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDepto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))))
+                                    .addComponent(txtDepto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel9))
+                                .addGap(58, 58, 58)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEstatusEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFNac, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -363,7 +365,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
                             .addComponent(jLabel8)
                             .addComponent(txtCelEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel9)
                             .addComponent(txtFNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -395,7 +397,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtSBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAlta)
                     .addComponent(btnBaja)
@@ -433,7 +435,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
     private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
         // TODO add your handling code here:
          try {
-             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
             PreparedStatement pst = cn.prepareStatement("delete from puesto where carnet_empleado = ?");
             
             pst.setString(1, txtBuscaxCarnet.getText().trim());
@@ -446,7 +448,6 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
             txtDepto.setText("");
             txtDomEmp.setText("");
             txtEstatusEmp.setText("");
-            txtFNac.setText("");
             txtNomEmp.setText("");
             txtPuesto.setText("");
             txtTelEmp.setText("");
@@ -459,7 +460,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
     private void buscarIDPuesto(String nombrePuesto){
         try
         {
-            com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
             com.mysql.jdbc.PreparedStatement pst = (com.mysql.jdbc.PreparedStatement) cn.prepareStatement("select id_puesto from puesto where nombre_puesto = ?");
             pst.setString(1, txtPuesto.getText().trim());
             ResultSet rs = pst.executeQuery();
@@ -476,7 +477,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
     private void buscarIDDepto(String nombreDepto){
         try
         {
-             com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+             com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
             com.mysql.jdbc.PreparedStatement pst = (com.mysql.jdbc.PreparedStatement) cn.prepareStatement("select id_departamento from departamento where nombre_departamento = ?");
             pst.setString(1, txtDepto.getText().trim());
             ResultSet rs = pst.executeQuery();
@@ -504,7 +505,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
             pst.setString(5, txtDomEmp.getText().trim());
             pst.setString(6, txtTelEmp.getText().trim());
             pst.setString(7, txtCelEmp.getText().trim());
-            pst.setString(8, txtFNac.getText().trim());
+            pst.setString(8, txtFNac.getDate().toString().trim());
             pst.setString(9, txtEstatusEmp.getText().trim());
             pst.setString(10, id_Puesto);
             pst.setString(11, id_Depto);
@@ -605,7 +606,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtDepto;
     private javax.swing.JTextField txtDomEmp;
     private javax.swing.JTextField txtEstatusEmp;
-    private javax.swing.JTextField txtFNac;
+    private com.toedter.calendar.JDateChooser txtFNac;
     private javax.swing.JTextField txtNomEmp;
     private javax.swing.JTextField txtPuesto;
     private javax.swing.JTextField txtSBase;
