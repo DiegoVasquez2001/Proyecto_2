@@ -52,20 +52,23 @@ public class FrmMantConcepto extends javax.swing.JInternalFrame {
         btnBuscaxCod = new javax.swing.JButton();
         btnBuscaxNom = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(204, 204, 254));
+        setBackground(new java.awt.Color(51, 51, 51));
         setClosable(true);
         setTitle("Mantenimiento Conceptos");
 
-        panelMantPuesto.setBackground(new java.awt.Color(204, 204, 255));
+        panelMantPuesto.setBackground(new java.awt.Color(51, 51, 51));
         panelMantPuesto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Código Concepto:");
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre Concepto:");
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Efecto Concepto");
 
         txtCodCon.setEditable(false);
@@ -76,6 +79,7 @@ public class FrmMantConcepto extends javax.swing.JInternalFrame {
         txtEstadoCon.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("MANTENIMIENTO CONCEPTOS");
 
         btnGenCod.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -115,11 +119,13 @@ public class FrmMantConcepto extends javax.swing.JInternalFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Buscar por Código:");
 
         txtBuscaxCod.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Buscar por Nombre:");
 
         txtBuscaxNom.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
