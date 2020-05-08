@@ -5,6 +5,10 @@
  */
 package Formas;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author diego
@@ -32,10 +36,10 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        TxtCodNom = new javax.swing.JTextField();
+        BtnAceptar = new javax.swing.JButton();
+        JDCFI = new com.toedter.calendar.JDateChooser();
+        JDCFF = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setClosable(true);
@@ -60,23 +64,23 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Fecha Fin:");
 
-        jTextField1.setEditable(false);
-        jTextField1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        TxtCodNom.setEditable(false);
+        TxtCodNom.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton1.setText("Aceptar");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BtnAceptar.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        BtnAceptar.setText("Aceptar");
+        BtnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BtnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BtnAceptarActionPerformed(evt);
             }
         });
 
-        jDateChooser1.setDateFormatString("dd/MM/yyyy");
-        jDateChooser1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        JDCFI.setDateFormatString("dd/MM/yyyy");
+        JDCFI.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jDateChooser2.setDateFormatString("dd/MM/yyyy");
-        jDateChooser2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        JDCFF.setDateFormatString("dd/MM/yyyy");
+        JDCFF.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,7 +90,7 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -100,9 +104,9 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel3))
                                 .addGap(34, 34, 34)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(JDCFF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(TxtCodNom, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JDCFI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 58, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -118,17 +122,17 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TxtCodNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(JDCFI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(JDCFF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel3)))
                 .addGap(44, 44, 44)
-                .addComponent(jButton1)
+                .addComponent(BtnAceptar)
                 .addContainerGap())
         );
 
@@ -152,20 +156,35 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    private void BtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarActionPerformed
+        Date fecha1, fecha2;
+        fecha1 = JDCFI.getDate();
+        fecha2 = JDCFF.getDate();
+        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-mm-dd");
+        GenerarCodigo(fecha1);
+    }//GEN-LAST:event_BtnAceptarActionPerformed
+    String cod="NOM";
+    private void GenerarCodigo(Date fecha){
+        SimpleDateFormat dtf = new SimpleDateFormat("dd-MM-yyyy");
+        String fecha_nom = dtf.format(fecha);
+        for(int i=0; i<fecha_nom.length(); i++){
+            if(fecha_nom.toString().charAt(i)!='-')
+            {
+                cod+=fecha_nom.toString().charAt(i);
+            }
+        }
+        TxtCodNom.setText(cod);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JButton BtnAceptar;
+    private com.toedter.calendar.JDateChooser JDCFF;
+    private com.toedter.calendar.JDateChooser JDCFI;
+    private javax.swing.JTextField TxtCodNom;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
