@@ -248,7 +248,7 @@ public class Frm_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem FrmMantDepto_Call;
     private javax.swing.JMenuItem FrmMantEmp_Call;
     private javax.swing.JMenuItem Salir_Sistema;
-    private javax.swing.JDesktopPane Workbench;
+    public static javax.swing.JDesktopPane Workbench;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
