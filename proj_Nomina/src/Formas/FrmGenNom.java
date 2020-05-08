@@ -162,6 +162,11 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
         fecha2 = JDCFF.getDate();
         SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-mm-dd");
         GenerarCodigo(fecha1);
+        
+        FrmCalcNom frmCN = new FrmCalcNom();
+        frmCN.setVisible(true);
+        Frm_Principal.Workbench.add(frmCN);
+        FrmCalcNom.TxtCodNom.setText(cod);
     }//GEN-LAST:event_BtnAceptarActionPerformed
     String cod="NOM";
     private void GenerarCodigo(Date fecha){
@@ -180,7 +185,7 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnAceptar;
     private com.toedter.calendar.JDateChooser JDCFF;
     private com.toedter.calendar.JDateChooser JDCFI;
-    private javax.swing.JTextField TxtCodNom;
+    public javax.swing.JTextField TxtCodNom;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
