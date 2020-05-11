@@ -171,7 +171,7 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
         TxtCodNom.setText(cod);
         try
         {
-            com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
             PreparedStatement pst1 = cn.prepareStatement("INSERT INTO nomina VALUES(?,?,?)");
             pst1.setString(1, TxtCodNom.getText().trim());
             pst1.setString(2, dt1.format(fecha1).trim());
