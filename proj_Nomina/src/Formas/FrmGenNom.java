@@ -5,8 +5,14 @@
  */
 package Formas;
 
+import static Formas.FrmCalcNom.TxtCodNom;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -160,12 +166,31 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
         Date fecha1, fecha2;
         fecha1 = JDCFI.getDate();
         fecha2 = JDCFF.getDate();
-        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
         GenerarCodigo(fecha1);
+        TxtCodNom.setText(cod);
+        try
+        {
+            com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            PreparedStatement pst1 = cn.prepareStatement("INSERT INTO nomina VALUES(?,?,?)");
+            pst1.setString(1, TxtCodNom.getText().trim());
+            pst1.setString(2, dt1.format(fecha1).trim());
+            pst1.setString(3, dt1.format(fecha2).trim());
+            pst1.executeUpdate();
+            JOptionPane.showMessageDialog(null, "¡REGISTRO REALIZADO!");
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+        FrmCalcNom frmCN;
+        try {
+            frmCN = new FrmCalcNom();
+            frmCN.setVisible(true);
+            Frm_Principal.Workbench.add(frmCN);
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmGenNom.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        FrmCalcNom frmCN = new FrmCalcNom();
-        frmCN.setVisible(true);
-        Frm_Principal.Workbench.add(frmCN);
         FrmCalcNom.TxtCodNom.setText(cod);
     }//GEN-LAST:event_BtnAceptarActionPerformed
     String cod="NOM";
@@ -178,7 +203,6 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
                 cod+=fecha_nom.toString().charAt(i);
             }
         }
-        TxtCodNom.setText(cod);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
