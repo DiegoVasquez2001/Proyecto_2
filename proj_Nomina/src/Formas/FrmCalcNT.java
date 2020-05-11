@@ -99,6 +99,11 @@ public class FrmCalcNT extends javax.swing.JInternalFrame {
 
         BtnAlm.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         BtnAlm.setText("Almacenar");
+        BtnAlm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAlmActionPerformed(evt);
+            }
+        });
 
         TxtSB.setEditable(false);
         TxtSB.setBackground(new java.awt.Color(51, 51, 51));
@@ -223,6 +228,24 @@ public class FrmCalcNT extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, ex.toString());
         }
     }//GEN-LAST:event_BtnCalcActionPerformed
+
+    private void BtnAlmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAlmActionPerformed
+        try
+        {
+            com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            java.sql.PreparedStatement pst = cn.prepareStatement("insert into impresion_nomina values(?,?,?,?,?)");
+            pst.setString(1, "0");
+            pst.setString(2, TxtCodNom.getText().trim());
+            pst.setString(3, TxtIT.getText().trim());
+            pst.setString(4, TxtDT.getText().trim());
+            pst.setString(5, TxtSL.getText().trim());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro Realizado!");
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }//GEN-LAST:event_BtnAlmActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
