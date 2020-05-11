@@ -7,6 +7,9 @@ package Formas;
 
 import com.jtattoo.plaf.noire.NoireLookAndFeel;
 import java.awt.Dimension;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -226,7 +229,15 @@ public class Frm_Principal extends javax.swing.JFrame {
            Llamar_Formas("GenNom");
        }
        else{
-           
+           FrmCalcNom frmCN;
+           try {
+               frmCN = new FrmCalcNom();
+               FrmCalcNom.TxtCodNom.setEditable(true);
+               frmCN.setVisible(true);
+               Workbench.add(frmCN);
+           } catch (SQLException ex) {
+               Logger.getLogger(Frm_Principal.class.getName()).log(Level.SEVERE, null, ex);
+           }
        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 

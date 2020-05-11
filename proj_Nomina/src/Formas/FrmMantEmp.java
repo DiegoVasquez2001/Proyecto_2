@@ -490,7 +490,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
     private void buscarIDDepto(String nombreDepto){
         try
         {
-             com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+            com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
             com.mysql.jdbc.PreparedStatement pst = (com.mysql.jdbc.PreparedStatement) cn.prepareStatement("select id_departamento from departamento where nombre_departamento = ?");
             pst.setString(1, txtDepto.getText().trim());
             ResultSet rs = pst.executeQuery();
@@ -508,7 +508,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         buscarIDDepto(txtDepto.getText());
         Date fecha;
         fecha = txtFNac.getDate();
-        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
         try
         {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
@@ -532,6 +532,7 @@ public class FrmMantEmp extends javax.swing.JInternalFrame {
         }
         catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex.toString());
+            JOptionPane.showMessageDialog(null, dt1.format(fecha));
         }
     }//GEN-LAST:event_btnAltaActionPerformed
 
