@@ -534,10 +534,12 @@ public class FrmCalcNom extends javax.swing.JInternalFrame {
                 }
             }
             JOptionPane.showMessageDialog(null, "¡REGISTRO REALIZADO!"); 
-            FrmCalcNT.TxtCodNom.setText(TxtCodNomEmp.getText());
+            
             FrmCalcNT NT = new FrmCalcNT();
             NT.setVisible(true);
             Frm_Principal.Workbench.add(NT);
+            FrmCalcNT.TxtCodNom.setText(TxtCodNomEmp.getText());
+            FrmCalcNT.TxtSB.setText(TxtSueldo.getText());
             TxtCodNomEmp.setText("");
             TxtCarnet.setText("");
            

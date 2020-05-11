@@ -5,6 +5,11 @@
  */
 package Formas;
 
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author CRISTOPHER
@@ -38,8 +43,11 @@ public class FrmCalcNT extends javax.swing.JInternalFrame {
         TxtSL = new javax.swing.JTextField();
         BtnCalc = new javax.swing.JButton();
         BtnAlm = new javax.swing.JButton();
+        TxtSB = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 51, 51));
+        setClosable(true);
         setTitle("Calcular Total Nomina");
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
@@ -83,9 +91,23 @@ public class FrmCalcNT extends javax.swing.JInternalFrame {
 
         BtnCalc.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         BtnCalc.setText("Calcular");
+        BtnCalc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCalcActionPerformed(evt);
+            }
+        });
 
         BtnAlm.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         BtnAlm.setText("Almacenar");
+
+        TxtSB.setEditable(false);
+        TxtSB.setBackground(new java.awt.Color(51, 51, 51));
+        TxtSB.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        TxtSB.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Sueldo Base:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,26 +127,32 @@ public class FrmCalcNT extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3)
-                                .addComponent(jLabel2))
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel5))
                             .addGap(18, 18, 18)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(TxtIT, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(TxtDT, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(TxtSL, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(TxtSL, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TxtSB, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(BtnAlm)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(TxtCodNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnCalc)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TxtSB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(TxtIT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -160,6 +188,42 @@ public class FrmCalcNT extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BtnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCalcActionPerformed
+        try
+        {
+            com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            String sql1="SELECT sum(valor_concepto) FROM detalle_nomina\n" +
+            "INNER JOIN nomina_empleado on nomina_empleado.id_nomEmp = detalle_nomina.fk_nominae\n" +
+            "INNER JOIN concepto ON concepto.id_concepto = detalle_nomina.fk_concepto\n" +
+            "WHERE concepto.efecto_concepto='Ingreso' AND nomina_empleado.id_nomEmp=?";
+            PreparedStatement pst1 = cn.prepareStatement(sql1);
+            pst1.setString(1, TxtCodNom.getText().trim());
+            ResultSet rs1 = pst1.executeQuery();
+            while(rs1.next()){
+               TxtIT.setText(rs1.getString("sum(valor_concepto)"));
+           }
+            String sql2="SELECT sum(valor_concepto) FROM detalle_nomina\n" +
+            "INNER JOIN nomina_empleado on nomina_empleado.id_nomEmp = detalle_nomina.fk_nominae\n" +
+            "INNER JOIN concepto ON concepto.id_concepto = detalle_nomina.fk_concepto\n" +
+            "WHERE concepto.efecto_concepto='Descuento' AND nomina_empleado.id_nomEmp=?";
+            PreparedStatement pst2 = cn.prepareStatement(sql2);
+            pst2.setString(1, TxtCodNom.getText().trim());
+            ResultSet rs2 = pst2.executeQuery();
+            while(rs2.next()){
+               TxtDT.setText(rs2.getString("sum(valor_concepto)"));
+           }
+            double sb, it, dt, sl;
+            sb=Double.parseDouble(TxtSB.getText());
+            it=Double.parseDouble(TxtIT.getText());
+            dt=Double.parseDouble(TxtDT.getText());
+            sl=(sb+it)-dt;
+            TxtSL.setText(String.valueOf(sl));
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_BtnCalcActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAlm;
@@ -167,11 +231,13 @@ public class FrmCalcNT extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField TxtCodNom;
     private javax.swing.JTextField TxtDT;
     private javax.swing.JTextField TxtIT;
+    public static javax.swing.JTextField TxtSB;
     private javax.swing.JTextField TxtSL;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
