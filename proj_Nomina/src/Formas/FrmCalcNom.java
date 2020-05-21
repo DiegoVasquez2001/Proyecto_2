@@ -30,7 +30,7 @@ public class FrmCalcNom extends javax.swing.JInternalFrame {
     }
     public void loadDeptos() throws SQLException
     {
-        com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+        com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery("SELECT nombre_departamento FROM departamento");
         cmbDepto.removeAllItems();
@@ -41,7 +41,7 @@ public class FrmCalcNom extends javax.swing.JInternalFrame {
     }
     public void loadConceptos() throws SQLException
     {
-        com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+        com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery("SELECT nombre_concepto FROM concepto");
         cmbConceptos.removeAllItems();
@@ -441,7 +441,7 @@ public class FrmCalcNom extends javax.swing.JInternalFrame {
        DefaultTableModel Tmodel = (DefaultTableModel) TBEmpleados.getModel();
        try
        {
-           com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+           com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
            String sql="select carnet_empleado, nombre_empleado, apellidos_empleado, nombre_departamento, nombre_puesto, sueldo_base from empleado\n" +
             "INNER JOIN departamento on departamento.id_departamento = empleado.fk_departamento\n" +
             "INNER JOIN puesto on puesto.id_puesto = empleado.fk_puesto\n" +
@@ -495,7 +495,7 @@ public class FrmCalcNom extends javax.swing.JInternalFrame {
             }
             DefaultTableModel llenado = (DefaultTableModel)TBConceptos.getModel();
             Object[] conceptos = new Object[3];
-            com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
             PreparedStatement pst = cn.prepareStatement("SELECT id_concepto FROM concepto WHERE nombre_concepto=?");
             pst.setString(1, cmbConceptos.getSelectedItem().toString().trim());
             ResultSet rs = pst.executeQuery();
@@ -517,7 +517,7 @@ public class FrmCalcNom extends javax.swing.JInternalFrame {
     private void BtnFinEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnFinEmpActionPerformed
         try
         {
-            com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
             PreparedStatement pst1 = cn.prepareStatement("INSERT INTO nomina_empleado VALUES(?,?,?)");
             pst1.setString(1, TxtCodNomEmp.getText().trim());
             pst1.setString(2, TxtCarnet.getText().trim());
