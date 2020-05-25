@@ -6,15 +6,17 @@
 -- Tiempo de generación: 11-05-2020 a las 00:07:28
 -- Versión del servidor: 5.7.17-log
 -- Versión de PHP: 5.6.30
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+CREATE DATABASE planilla_sys;
+USE planilla_sys;
+SET time_zone = '-06:00';
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+SET GLOBAL sql_mode = '';
+
 
 --
 -- Base de datos: `planilla_sys`
@@ -153,6 +155,21 @@ CREATE TABLE `puesto` (
   `estado_puesto` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- ---------------------------------------------------------
+
+--
+-- Estrucutra de tabla para la tabla `usuarios`
+--
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `usuario` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `nombre` varchar(80) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `last_session` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `Id_Tipo` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Volcado de datos para la tabla `puesto`
 --
@@ -265,6 +282,8 @@ ALTER TABLE `impresion_nomina`
 ALTER TABLE `nomina_empleado`
   ADD CONSTRAINT `fk_empleado` FOREIGN KEY (`fk_empleado`) REFERENCES `empleado` (`carnet_empleado`),
   ADD CONSTRAINT `fk_nomina` FOREIGN KEY (`fk_nomina`) REFERENCES `nomina` (`id_nomina`);
+  
+  
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
