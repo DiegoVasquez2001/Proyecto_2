@@ -14,20 +14,34 @@ import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
+import modelo.Usuarios;
 /**
  *
  * @author diego
  */
 public class Frm_Principal extends javax.swing.JFrame {
 
+    Usuarios mod;
     /**
      * Creates new form Frm_Principal
      */
     public Frm_Principal() {
         initComponents();
     }
+    Frm_Principal(Usuarios mod) {
+        initComponents();
+        setLocationRelativeTo(null);
+        this.mod = mod;
 
+        if (mod.getId_Tipo() == 1) {
+            jMenu1.setVisible(true);
+            jMenu2.setVisible(true);
+        } else {
+            jMenu1.setVisible(false);
+           jMenu2.setVisible(false);
+        }
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
