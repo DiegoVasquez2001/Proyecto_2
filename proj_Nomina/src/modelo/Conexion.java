@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class Conexion {
     
-    private final String base = "tienda";
+    private final String base = "planilla_sys";
     private final String user = "root";
     private final String password = "";
     private final String url = "jdbc:mysql://localhost:3306/" + base;

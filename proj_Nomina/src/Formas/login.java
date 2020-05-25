@@ -6,7 +6,9 @@
 /*Autor: CastilloC*/
 package Formas;
 
-import Formas.Frm_Principal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import modelo.Hash;
 import javax.swing.JOptionPane;
 import modelo.SqlUsuarios;
@@ -125,6 +127,9 @@ public class login extends javax.swing.JFrame {
         SqlUsuarios modSql = new SqlUsuarios();
         Usuarios mod = new Usuarios();
         
+        Date date = new Date(); // Creamos un objeto de tipo Date
+        DateFormat fechaHora = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss"); // Creamos un formato para la fecha
+    
         String pass = new String(txtPassword.getPassword());
         
         if (!txtUsuario.getText().equals("") && !pass.equals("")) { 
@@ -133,6 +138,7 @@ public class login extends javax.swing.JFrame {
             
             mod.setUsuario(txtUsuario.getText());
             mod.setPassword(nuevoPass);
+            mod.setLast_session(fechaHora.format(date));//Obtenermos la fecha actual con el formato establecido
             
             if (modSql.login(mod)) {
                 Inicio.frmLog = null;
