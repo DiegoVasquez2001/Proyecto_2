@@ -541,8 +541,15 @@ public class FrmCalcNom extends javax.swing.JInternalFrame {
             FrmCalcNT.TxtCodNom.setText(TxtCodNomEmp.getText());
             FrmCalcNT.TxtSB.setText(TxtSueldo.getText());
             TxtCodNomEmp.setText("");
+            TxtNombre.setText("");
             TxtCarnet.setText("");
-           
+            TxtDepto.setText("");
+            TxtPuesto.setText("");
+            TxtSueldo.setText("");
+            txtmop.setText("");
+            DefaultTableModel modeloClearTCon = (DefaultTableModel) TBConceptos.getModel();
+            modeloClearTCon.setRowCount(0);
+            TBConceptos.setModel(modeloClearTCon);
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, e.toString());

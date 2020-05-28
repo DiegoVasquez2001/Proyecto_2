@@ -311,7 +311,7 @@ public class FrmMantConcepto extends javax.swing.JInternalFrame {
     private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
         // TODO add your handling code here:
         try {
-             java.sql.Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+             java.sql.Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
             java.sql.PreparedStatement pst = cn.prepareStatement("delete from concepto where id_concepto = ?");
             
             pst.setString(1, txtBuscaxCod.getText().trim());
@@ -328,7 +328,7 @@ public class FrmMantConcepto extends javax.swing.JInternalFrame {
 
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
       try{
-            java.sql.Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "");
+            java.sql.Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
             java.sql.PreparedStatement pst = cn.prepareStatement("insert into concepto values(?,?,?)");
             pst.setString(1, txtCodCon.getText().trim());
             pst.setString(2, txtNomCon.getText().trim());

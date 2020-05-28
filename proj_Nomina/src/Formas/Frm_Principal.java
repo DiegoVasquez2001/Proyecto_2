@@ -222,7 +222,9 @@ public class Frm_Principal extends javax.swing.JFrame {
         
     }
     private void Salir_SistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Salir_SistemaActionPerformed
-        System.exit(0);
+       this.dispose();
+       Inicio fInicio = new Inicio();
+       fInicio.setVisible(true);
     }//GEN-LAST:event_Salir_SistemaActionPerformed
 
     private void FrmMantDepto_CallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FrmMantDepto_CallActionPerformed
