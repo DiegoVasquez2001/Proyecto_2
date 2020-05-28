@@ -20,6 +20,10 @@ import modelo.Usuarios;
 /**
  *
  */
+
+/*FORMULARIO login 
+    POR: CARLOS CASTILLO
+    FECHA: 25 DE MAYO DE 2020*/
 public class login extends javax.swing.JFrame {
 
     /**

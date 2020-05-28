@@ -192,7 +192,9 @@ public class FrmCalcNT extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /*FORMULARIO CALCULAR NOMINA TOTALES 
+    POR: CRISTOPHER JOEL
+    FECHA: 11 DE MAYO DE 2020*/
     private void BtnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCalcActionPerformed
         try
         {

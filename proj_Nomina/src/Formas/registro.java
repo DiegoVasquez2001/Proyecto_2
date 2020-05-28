@@ -14,6 +14,10 @@ import modelo.Usuarios;
 /**
  *
  */
+
+/*FORMULARIO REGISTRO 
+    POR: CARLOS CASTILLO
+    FECHA: 25 DE MAYO DE 2020*/
 public class registro extends javax.swing.JFrame {
 
     /**

@@ -19,8 +19,13 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author diego
+ * @author MOISES
  */
+
+/*MANTENIMIENTO DE EMPLEADOS
+    POR: MOISÉS FELIPE
+    FECHA: 6 DE ABRIL DE 2020*/
+
 public class FrmMantEmp extends javax.swing.JInternalFrame {
 
     /**

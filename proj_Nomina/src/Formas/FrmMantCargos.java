@@ -14,10 +14,15 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author diego
+ * @author MOISES
  */
-public class FrmMantCargos extends javax.swing.JInternalFrame {
 
+/*MANTENIMIENTO DE CARGOS
+    POR: MOISÉS FELIPE
+    FECHA: 6 DE ABRIL DE 2020*/
+
+public class FrmMantCargos extends javax.swing.JInternalFrame {
+    
     /**
      * Creates new form FrmMantCargos
      */

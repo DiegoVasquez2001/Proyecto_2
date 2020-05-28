@@ -15,8 +15,12 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author diego
+ * @author MOISES
  */
+
+/*MANTENIMIENTO DE DEPARTAMENTOS
+    POR: MOISÉS FELIPE
+    FECHA: 6 DE ABRIL DE 2020*/
 public class FrmMantDeptos extends javax.swing.JInternalFrame {
 
     /** Creates new form FrmMantDeptos */
