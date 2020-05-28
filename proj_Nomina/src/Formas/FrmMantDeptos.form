@@ -226,7 +226,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Generar C&#xf3;digo"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor Por defecto"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -240,7 +240,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Alta"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor Por defecto"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -254,7 +254,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Baja"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor Por defecto"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -268,7 +268,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Cambio"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor Por defecto"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -318,7 +318,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor Por defecto"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -332,7 +332,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor Por defecto"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
