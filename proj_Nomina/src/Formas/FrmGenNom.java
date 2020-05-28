@@ -5,7 +5,7 @@
  */
 package Formas;
 
-import static Formas.FrmCalcNom.TxtCodNom;
+import static Formas.FrmCalcNom.TxtCodNom;// librerias que se utilizaran
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -164,28 +164,30 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
 
     private void BtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarActionPerformed
         Date fecha1, fecha2;
-        fecha1 = JDCFI.getDate();
-        fecha2 = JDCFF.getDate();
-        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
+        fecha1 = JDCFI.getDate();// asignacion de declaratorias por decilo de una manera
+        fecha2 = JDCFF.getDate();// Decir que la fecha 2 = text file de laparte visual 
+        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");// control de la fecha ingresada en el area visual 
         GenerarCodigo(fecha1);
         TxtCodNom.setText(cod);
         try
         {
             com.mysql.jdbc.Connection cn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
-            PreparedStatement pst1 = cn.prepareStatement("INSERT INTO nomina VALUES(?,?,?)");
-            pst1.setString(1, TxtCodNom.getText().trim());
-            pst1.setString(2, dt1.format(fecha1).trim());
-            pst1.setString(3, dt1.format(fecha2).trim());
+            // Este comando es para hacer coneccion de Datos con Mysql
+            PreparedStatement pst1 = cn.prepareStatement("INSERT INTO nomina VALUES(?,?,?)");// Inserta Datos 
+            pst1.setString(1, TxtCodNom.getText().trim());//Ingreso de Dato COdigo De Nomina 
+            pst1.setString(2, dt1.format(fecha1).trim());//Ingreso de Dato Fecha De Inicio
+            pst1.setString(3, dt1.format(fecha2).trim());//Ingreso De Dato Fecha De Fin
+
             pst1.executeUpdate();
-            JOptionPane.showMessageDialog(null, "¡REGISTRO REALIZADO!");
+            JOptionPane.showMessageDialog(null, "¡REGISTRO REALIZADO!");//Mensaje
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, e.toString());
+            JOptionPane.showMessageDialog(null, e.toString());//Excepciones que tendra sql
         }
         FrmCalcNom frmCN;
         try {
             frmCN = new FrmCalcNom();
-            frmCN.setVisible(true);
+            frmCN.setVisible(true);// Para decir que sea visble
             Frm_Principal.Workbench.add(frmCN);
         } catch (SQLException ex) {
             Logger.getLogger(FrmGenNom.class.getName()).log(Level.SEVERE, null, ex);
@@ -195,12 +197,12 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtnAceptarActionPerformed
     String cod="NOM";
     private void GenerarCodigo(Date fecha){
-        SimpleDateFormat dtf = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat dtf = new SimpleDateFormat("dd-MM-yyyy");//Fechas 
         String fecha_nom = dtf.format(fecha);
         for(int i=0; i<fecha_nom.length(); i++){
             if(fecha_nom.toString().charAt(i)!='-')
             {
-                cod+=fecha_nom.toString().charAt(i);
+                cod+=fecha_nom.toString().charAt(i);// calculo De la nomina 
             }
         }
     }

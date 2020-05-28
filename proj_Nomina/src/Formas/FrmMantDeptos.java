@@ -6,7 +6,7 @@
 
 package Formas;
 
-import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Connection; //librerias que se usaron
 import com.mysql.jdbc.PreparedStatement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -263,8 +263,12 @@ public class FrmMantDeptos extends javax.swing.JInternalFrame {
     private void btnCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambioActionPerformed
         try{
             String ID = txtCodDepto.getText().trim();
+
             Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/planilla_sys", "root", "informaticdv2016");
+           //coneccion de datos 
+
             PreparedStatement pst = (PreparedStatement) cn.prepareStatement("UPDATE departamento SET nombre_departamento=?, estado_departamento=? WHERE id_departamento='"+ID+"'");
+            //insertar datos 
             pst.setString(1, txtNomDepto.getText().trim());
             pst.setString(2, txtEstadoDepto.getText().trim());
             pst.executeUpdate();
