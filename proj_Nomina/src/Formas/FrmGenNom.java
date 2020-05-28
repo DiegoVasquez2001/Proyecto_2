@@ -19,6 +19,11 @@ import javax.swing.JOptionPane;
  *
  * @author diego
  */
+
+/*FORMULARIO GENERAR NOMINA TOTALES 
+    POR: MOISES FELIPE
+    FECHA: 8 DE MAYO DE 2020*/
+
 public class FrmGenNom extends javax.swing.JInternalFrame {
 
     /**
@@ -161,7 +166,7 @@ public class FrmGenNom extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void BtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarActionPerformed
         Date fecha1, fecha2;
         fecha1 = JDCFI.getDate();// asignacion de declaratorias por decilo de una manera

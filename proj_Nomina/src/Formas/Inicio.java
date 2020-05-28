@@ -16,6 +16,10 @@ import javax.swing.UnsupportedLookAndFeelException;
 /**
  *
  */
+
+/*FORMULARIO INICIO 
+    POR: CARLOS CASTILLO
+    FECHA: 25 DE MAYO DE 2020*/
 public class Inicio extends javax.swing.JFrame {
 
     public static registro frmReg;

@@ -13,8 +13,13 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author diego
+ * @author MOISES
+ * 
  */
+
+/*MANTENIMIENTO DE CONCEPTOS DE NOMINA
+    POR: MOISÉS FELIPE
+    FECHA: 6 DE ABRIL DE 2020*/
 public class FrmMantConcepto extends javax.swing.JInternalFrame {
 
     /**

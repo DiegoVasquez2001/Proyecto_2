@@ -18,6 +18,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author diego
  */
+
+    /*FORMULARIO CALCULAR NOMINA TOTALES 
+    POR: CRISTOPHER JOEL, MOISES FELIPE Y DIEGO VASQUEZ
+    FECHA:      3.6.1 Función Generar Nómina	01-may	08-may
+     3.6.2 Función Calcular Ingresos	08-may	09-may
+     3.6.3 Función Calcular Egresos	08-may	10-may
+*/
 public class FrmCalcNom extends javax.swing.JInternalFrame {
 
     /**

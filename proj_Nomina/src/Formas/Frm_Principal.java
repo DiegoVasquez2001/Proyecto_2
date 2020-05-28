@@ -19,6 +19,10 @@ import modelo.Usuarios;
  *
  * @author diego
  */
+
+    /*FORMULARIO PRINCIPAL
+    POR: DIEGO VÁSQUEZ
+    FECHA: 22 DE MARZO DE 2020*/
 public class Frm_Principal extends javax.swing.JFrame {
 
     Usuarios mod;
